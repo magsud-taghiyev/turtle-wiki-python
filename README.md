@@ -1,50 +1,59 @@
 # Turtle-Wiki
 
-Настольное приложение на Python для поиска информации о видах черепах. Оно получает сведения о таксоне через iNaturalist API, находит связанную статью Википедии и показывает краткое описание и фотографию.
+A Python desktop application for searching information about turtle species. It gets taxon data from the iNaturalist API, finds the related Wikipedia article, and shows a short description and a photo.
 
-## Возможности
+## Screenshots
 
-- Поиск по названию вида.
-- Просмотр научного и распространённого названия, ранга, идентификатора таксона и ссылки на Википедию.
-- Просмотр краткого описания и фотографии в отдельном окне с прокруткой.
-- Локальная регистрация, вход и история поисковых запросов.
+![Login screen](project_screenshots/login.png)
+![Registration screen](project_screenshots/registration.png)
+![Search screen](project_screenshots/search.png)
+![Result window](project_screenshots/result.png)
+![Profile screen](project_screenshots/profile.png)
 
-Главное окно содержит экраны входа, регистрации, поиска и профиля. Результаты поиска открываются в отдельном окне. Данные аккаунта и история хранятся локально в файле `users` и не синхронизируются между компьютерами.
+## Features
 
-## Технологии
+- Search by species name.
+- View the scientific and common name, rank, taxon ID, and a link to Wikipedia.
+- View a short description and a photo in a separate scrollable window.
+- Local registration, login, and search history.
+
+The main window contains the login, registration, search, and profile screens. Search results open in a separate window. Account data and search history are stored locally in the `users` file and are not synchronized between computers.
+
+## Technologies
 
 - Python 3
-- Tkinter для графического интерфейса
+- Tkinter for the graphical interface
 - [iNaturalist API](https://www.inaturalist.org/pages/api+reference)
 - Wikipedia
-- `requests` для HTTP-запросов
-- Beautiful Soup (`beautifulsoup4`) для разбора HTML
-- ImageMagick для преобразования загруженной фотографии из JPG в PNG
+- `requests` for HTTP requests
+- Beautiful Soup (`beautifulsoup4`) for HTML parsing
+- ImageMagick for converting the downloaded photo from JPG to PNG
 
-`tkinter`, `json`, `os`, `re`, `subprocess` и `textwrap` входят в стандартную библиотеку Python. ImageMagick — отдельная программа; проект запускает `ImageMagick/magick.exe`.
+`tkinter`, `json`, `os`, `re`, `subprocess`, and `textwrap` are part of the Python standard library. ImageMagick is a separate program and is not included in this repository. The project runs `ImageMagick/magick.exe`.
 
-## Запуск в Windows
+## Running on Windows
 
-1. Установите Python 3.
-2. Откройте терминал в папке проекта.
-3. Установите сторонние Python-пакеты:
+1. Install Python 3.
+2. Download the portable Windows version of ImageMagick from the official website and put its contents into a folder named `ImageMagick` in the project root, so that `ImageMagick/magick.exe` exists.
+3. Open a terminal in the project folder.
+4. Install the third-party Python packages:
 
    ```powershell
    py -m pip install requests beautifulsoup4
    ```
 
-4. Запустите программу из папки проекта:
+5. Run the program from the project folder:
 
    ```powershell
    py turtle_wiki.py
    ```
 
-Запускайте программу из корневой папки проекта, где находятся изображения и папка `ImageMagick`.
+Always run the program from the project root folder, where the images and the `ImageMagick` folder are located.
 
-## Файлы данных
+## Data files
 
-При первом запуске приложение создаёт файл `users` в текущей папке, если его ещё нет. В нём локально сохраняются учётные записи и история поиска.
+On the first launch, the application creates a `users` file in the current folder if it does not exist yet. It stores accounts and search history locally.
 
-## Изображения
+## Images
 
-Приложение использует `turtle_ico.png`, `turtle_image.png` и `sulcata_image.png` из папки проекта. Во время поиска фотография загружается из iNaturalist, а затем ImageMagick преобразует её для отображения.
+The application uses `turtle_ico.png`, `turtle_image.png`, and `sulcata_image.png` from the project folder. During a search, the photo is downloaded from iNaturalist, and then ImageMagick converts it for display.
